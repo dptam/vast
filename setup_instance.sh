@@ -7,9 +7,10 @@ git_proj=$4
 
 until [ "$(./vast show instances | awk -v instance_id="$instance_id"  '$1 ~ instance_id' | awk '{print $3}')" == "running" ];
 do
-    echo "Waiting 5 second ..."
-    sleep 5
+    echo "Waiting 10 second ..."
+    sleep 10
 done
+sleep 25
 echo "Setup instance..."
 
 ssh_addr=$(./vast show instances | awk -v instance_id="$instance_id"  '$1 ~ instance_id' | awk '{print $10}')
